@@ -1,6 +1,6 @@
 #Entity: Speed, attack, defence, hp, level
 
-from debug.py import *
+from debug import *
 
 dbflag = True
 
@@ -9,8 +9,8 @@ class Battle:
 		pass
 
 	def add_fighters(self, entity1, entity2):
-		self.figher1 = entity1
-		self.figher2 = entity2
+		self.fighter1 = entity1
+		self.fighter2 = entity2
 
 	def turn(self):
 		move1 = self.fighter1.get_move()
@@ -18,22 +18,26 @@ class Battle:
 
 		if (move1 == "attack"):
 			if (move2 == "attack"):
-				if (fighter1.speed > fighter2.speed):
+				if (self.fighter1.speed > self.fighter2.speed):
 					#Damage Calculation
 					db(dbflag, "Fighter 1 attacks.")
-					fighter2.hp -= fighter1.attack
-						if (fighter2.hp <= 0):
-							fighter1.give_exp(50)
-						else:
-							fighter1.hp -= fighter2.attack
-								if (fighter1.hp <= 0):
-									fighter2.give_exp(50) 
+					self.fighter2.hp -= self.fighter1.attack
+					if (self.fighter2.hp <= 0):
+						self.fighter1.give_exp(50)
+						return
+					else:
+						self.fighter1.hp -= self.fighter2.attack
+						if (self.fighter1.hp <= 0):
+							self.fighter2.give_exp(50)
+							return 
 				else:
 					#Damage Calculation
-					fighter1.hp -= fighter2.attack
-						if (fighter1.hp <= 0):
-							fighter2.give_exp(50)
-						else:
-							fighter2.hp -= fighter1.attack
-								if (fighter2.hp <= 0):
-									fighter1.give_exp(50) 
+					self.fighter1.hp -= self.fighter2.attack
+					if (self.fighter1.hp <= 0):
+						self.fighter2.give_exp(50)
+						return
+					else:
+						self.fighter2.hp -= self.fighter1.attack
+						if (self.fighter2.hp <= 0):
+							self.fighter1.give_exp(50)
+							return
