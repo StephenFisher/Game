@@ -22,22 +22,32 @@ class Battle:
 					#Damage Calculation
 					db(dbflag, "Fighter 1 attacks.")
 					self.fighter2.hp -= self.fighter1.attack
+					db(dbflag, "Fighter 2 HP: " + str(self.fighter2.hp))
 					if (self.fighter2.hp <= 0):
+						db(dbflag, "Fighter 2 died")
 						self.fighter1.give_exp(50)
 						return
 					else:
+						db(dbflag, "Fighter 2 attacks.")
 						self.fighter1.hp -= self.fighter2.attack
+						db(dbflag, "Fighter 1 HP: " + str(self.fighter1.hp))
 						if (self.fighter1.hp <= 0):
+							db(dbflag, "Fighter 1 died")
 							self.fighter2.give_exp(50)
 							return 
 				else:
 					#Damage Calculation
+					db(dbflag, "Fighter 2 attacks.")
 					self.fighter1.hp -= self.fighter2.attack
+					db(dbflag, "Fighter 1 HP: " + str(self.fighter1.hp))
 					if (self.fighter1.hp <= 0):
 						self.fighter2.give_exp(50)
 						return
 					else:
+						db(dbflag, "Fighter 1 attacks.")
 						self.fighter2.hp -= self.fighter1.attack
+						db(dbflag, "Fighter 2 HP: " + str(self.fighter2.hp))
 						if (self.fighter2.hp <= 0):
+							db(dbflag, "Fighter 2 died.")
 							self.fighter1.give_exp(50)
 							return
