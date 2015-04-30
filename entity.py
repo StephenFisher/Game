@@ -25,3 +25,20 @@ class Entity:
 			self.attack += 2
 			self.defense += 2
 			self.speed += 2
+	def write_to(self, filename):
+		f = open(filename, 'a')
+		f.write("<entity>\n")
+		entityline = self.name + ","
+		entityline += str(self.level) + ","
+		entityline += str(self.hp) + ","
+		entityline += str(self.maxhp) + ","
+		entityline += str(self.attack) + ","
+		entityline += str(self.defense) + ","
+		entityline += str(self.speed) + ","
+		entityline += str(self.exp) + "\n"
+		f.write(entityline)
+		f.close()
+
+def parse_entity_line(entityline):
+	entitylist = entityline.strip().split(",")
+	return Entity(entitylist[0], int(entitylist[1]), int(entitylist[2]), int(entitylist[3]), int(entitylist[4]), int(entitylist[5]), int(entitylist[6]), int(entitylist[7]))
