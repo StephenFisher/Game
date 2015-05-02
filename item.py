@@ -28,10 +28,14 @@ class Melee(Weapon):
 		super.__init__(self)
 
 #Subclasses of Armour
-class Heavy(Armour):
+class Helmet(Armour):
 	def __init__(self):
 		super.__init__(self)
 
-class Light(Armour):
+class Platebody(Armour):
+	def __init__(self):
+		super.__init__(self)
+
+class Legs(Armour):
 	def __init__(self):
 		super.__init__(self)
