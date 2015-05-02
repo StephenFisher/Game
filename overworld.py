@@ -14,4 +14,18 @@ class Overworld:
 	def add_overworldentity(self, overworldentity):
 		self.map_list[overworldentity.y][overworldentity.x] = overworldentity
 	def move_overworldentity(self, overworldentity, new_x, new_y):
-		
+		self.map_list[new_y][new_x] = overworldentity
+		self.map_list[overworldentity.y][overworldentity.x] = None
+		overworldentity.x = new_x
+		overworldentity.y = new_y
+	def debugprint(self):
+		for row in self.map_list:
+			rowstring = ""
+			for cell in row:
+				if (cell == None):
+					rowstring += "."
+				elif (cell.datatype == "overworldentity"):
+					rowstring += "E"
+				else:
+					rowstring += "O"
+			print rowstring

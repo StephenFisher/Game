@@ -1,5 +1,15 @@
 from battle import *
 from entity import *
+from tilesheet import *
+import pygame
+import pygame.locals
+from constants import *
+
+pygame.init()
+clock = pygame.time.Clock()
+screen = pygame.display.set_mode((SCREENWIDTH, SCREENHEIGHT))
+
+tiles = tilesheet()
 
 def main():
 	mainbattle = Battle()
